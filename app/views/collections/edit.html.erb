@@ -1,0 +1,63 @@
+
+  <div class="group col-md-6 col-md-offset-3">
+    <h2 class="text-center">修改模板</h2>
+    <%= simple_form_for @collection do |c| %>
+    <div class="form-group">
+      <%= c.input :title, input_html: { class: "form-control"} %>
+    </div>
+      <div class="form-group">
+        <%= c.input :content, input_html: { class: "form-control"} %>
+      </div>
+      <div class="form-group">
+        <%= c.input :price, input_html: { class: "form-control"} %>
+      </div>
+
+    <table  class="table table-hover">
+      <thead>
+        <tr>
+          <td>No.</td>
+          <td>Question</td>
+          <td>
+            Include
+          </td>
+        </tr>
+      </thead>
+      <% @questions.each do |question| %>
+      <%= simple_form_for question do |q| %>
+        <tr>
+          <td><%= question.id %></td>
+
+          <td>
+
+            <%= question.content %></td>
+          <td>
+            <% if question.collections.include?(@collection) %>
+            <%= link_to("Quit", quit_collection_question_path(@collection,question), method: :post,  class: "btn btn-primary btn-danger") %>
+            <% else %>
+            <%= link_to("Join", join_collection_question_path(@collection,question), method: :post,  class: "btn btn-primary btn-success") %>
+            <% end %>
+
+            <% if false %>
+            <%=q.input :is_included, :label => "", :as => :boolean %>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      <% end %>
+    </table>
+
+  <%= c.submit "Submit", class: "btn btn-primary", data: { disable_with: "Submitting..." } %>
+    <% end %>
+
+  </div>
+<script>
+
+$(document).on('click', '.cclass', function () {
+  var index = $(this).index() //拿到这个「选项卡」的index，第一个是0，第二个是1，以此类推
+  // var x=$('.cclass').index
+  // var t=document.getElementById("c")
+  alert(parseInt(index))
+
+})
+
+</script>

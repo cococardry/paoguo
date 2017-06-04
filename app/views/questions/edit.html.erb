@@ -1,0 +1,50 @@
+
+<div class="group col-md-6 col-md-offset-3">
+  <h2 class="text-center">修改问题</h2>
+  <%= simple_form_for @question do |q| %>
+  <div class="form-group">
+    <%= q.input :content, input_html: { class: "form-control"} %>
+  </div>
+
+  <% if false %>
+  <div class="group">
+    所属模板：<%=q.select :collection_id, 1..Question.count%>
+  </div>
+  <div class="group">
+
+    <%=q.input :is_included, :label => "包含", :as => :boolean %>
+
+  </div>
+  <% end %>
+
+  <table  class="table table-hover">
+    <thead>
+      <tr>
+
+        <td>Collection</td>
+        <td>
+          操作
+        </td>
+      </tr>
+    </thead>
+    <% @collections.each do |collection| %>
+      <tr>
+        <td><%= collection.title %></td>
+        <td>
+          <%= link_to("join", join_collection_path(collection), method: :post,  :remote => true , class: "btn btn-primary") %>
+        </td>
+      </tr>
+
+    <% end %>
+  </table>
+
+
+
+  <%= q.submit "Submit", class: "btn btn-primary",  data: { disable_with: "Submitting..." } %>
+  <%end  %>
+
+</div>
+<script>
+
+
+</script>

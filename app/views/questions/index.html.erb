@@ -1,0 +1,41 @@
+<div class="col-md-12">
+  <!-- <div class="group"> -->
+  <%= link_to("New Question", new_question_path, class: "btn btn-primary pull-right") %>
+  <!-- </div> -->
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td>
+          NO.
+        </td>
+        <td>
+          Content
+        </td>
+        <td>
+          Collection
+        </td>
+        <td>
+          Is_included
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @questions.each do |question| %>
+        <tr>
+          <td><%= question.id %></td>
+
+          <td><%= question.content %></td>
+
+          <td><%= question.collection_id %></td>
+          <td>
+            <%= question.is_included %>
+          </td>
+          <td>
+            <%= link_to("Edit", edit_question_path(question), class: "btn btn-primary btn-sm") %>
+            <%= link_to("Delete", question_path(question), method: :delete, :remote => true, class: "btn btn-primary btn-sm") %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

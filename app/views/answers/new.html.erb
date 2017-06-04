@@ -1,0 +1,48 @@
+<style>
+ tr{
+   font-size:16px;
+ }
+ textarea{
+   resize:none;
+   margin-top:5px;
+ }
+</style>
+<div class="col-md-12">
+
+
+<h2 class="text-center"><%=@collection.title%></h2>
+<div class="col-md-6 col-md-offset-3">
+  <div class="group">
+    <table style="width:100%;">
+
+    <% if @collection.questions.count>0 %>
+
+    <% @collection.questions.each do |question| %>
+      <tr>
+        <td>
+          <%= question.content %></td>
+
+      </tr>
+          <tr>
+            <td>
+              <% @answer=Answer.new
+                @answer.question_id=question.id
+              %>
+              <%= simple_form_for @answer do |a| %>
+              <!-- <div class="form-group"> -->
+              <%= a.input :content, :label => false, input_html: { class: "form-control"} %>
+              <!-- </div> -->
+              <% end %>
+            </td>
+          </tr>
+
+
+    <% end %>
+    <% end %>
+      </table>
+      <center>
+        <%=link_to("提交", saveAnswer_collection_path(@collection), method: :post,class:"btn btn-danger btn-lg text-center") %>
+      </center>
+  </div>
+</div>
+</div>

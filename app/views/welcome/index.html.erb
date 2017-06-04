@@ -1,1 +1,34 @@
-<h1> Hello World! </h1>
+<style>
+  .btn{
+    border-radius: 1px;
+    width:50%;
+  }
+  .thumbnail{
+    box-shadow:5px 5px 5px #888888;
+  }
+</style>
+<div class="col-md-12">
+  <% @collections.each do |collection| %>
+    <div class="col-md-4">
+    <div class="thumbnail text-center" >
+      <%= link_to("模板"+collection.title, new_collection_answer_path(collection), class: "btn btn-danger btn-lg")  %>
+      <img style="width:70%;margin-top:10px;" src="https://ww2.sinaimg.cn/large/006tKfTcgy1fg885yfhgcj30rs0rs77t.jpg" />
+
+    </div>
+  </div>
+  <% end %>
+
+</div>
+
+
+
+<div class="col-md-12 text-center" style="margin-bottom:10px;">
+  <%=link_to("新建问题", new_question_path, class:"btn btn-primary btn-lg text-center") %>
+  <%=link_to("新建模板", new_collection_path, class:"btn btn-primary btn-lg text-center") %>
+
+</div>
+
+<div class="col-md-12 text-center">
+  <%=link_to("所有问题", questions_path, class:"btn btn-danger btn-lg text-center") %>
+  <%=link_to("所有模板", collections_path, class:"btn btn-danger btn-lg text-center") %>
+</div>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-# namespace :admin do
+
+
   resources :collections do
     resources :questions do
       member do
@@ -25,7 +26,9 @@ Rails.application.routes.draw do
   end
 
   resources :answers
-# end
+
+
   devise_for :users
+
   root 'welcome#index'
 end

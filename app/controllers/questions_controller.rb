@@ -63,9 +63,24 @@ class QuestionsController < ApplicationController
     end
     redirect_to edit_collection_path(@collection)
   end
+
+  def input
+    @collection=Collection.find(params[:collection_id])
+    @questions=@collection.questions
+
+  end
+
+  def update_temp
+    @question=Question.first
+    puts @question.temp_answer
+  end
+
+
+
+
   private
 
   def question_params
-    params.require(:question).permit(:content, :collection_id, :is_included)
+    params.require(:question).permit(:content, :collection_id, :is_included, :temp_answer)
   end
 end

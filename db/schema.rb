@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170524131245) do
+ActiveRecord::Schema.define(version: 20170608051228) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "content"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20170524131245) do
     t.boolean  "is_included"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.text     "temp_answer"
   end
 
   create_table "users", force: :cascade do |t|

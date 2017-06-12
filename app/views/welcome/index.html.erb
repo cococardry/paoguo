@@ -6,12 +6,17 @@
   .thumbnail{
     box-shadow:5px 5px 5px #888888;
   }
+  div{
+    font-family: 'Noto';
+    /*font-weight: bolder;*/
+  }
 </style>
 <div class="col-md-12">
+  <h1>跑步run</h1>
   <% @collections.each do |collection| %>
     <div class="col-md-4">
     <div class="thumbnail text-center" >
-      <%= link_to("模板"+collection.title, new_collection_answer_path(collection), class: "btn btn-danger btn-lg")  %>
+      <%= link_to("模板"+collection.title, input_collection_questions_path(collection), class: "btn btn-danger btn-lg")  %>
       <img style="width:70%;margin-top:10px;" src="https://ww2.sinaimg.cn/large/006tKfTcgy1fg885yfhgcj30rs0rs77t.jpg" />
 
     </div>
@@ -19,7 +24,6 @@
   <% end %>
 
 </div>
-
 
 
 <div class="col-md-12 text-center" style="margin-bottom:10px;">

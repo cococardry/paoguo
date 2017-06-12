@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   resources :collections do
     resources :questions do
+      collection do
+        get :input
+        post :update_temp
+      end
       member do
         post :join
         post :quit
@@ -11,7 +15,7 @@ Rails.application.routes.draw do
     resources :answers do
       member do
         get :new
-        post :saveAnswer
+        post :updateAnswer
       end
     end
     member do

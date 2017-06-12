@@ -1,0 +1,48 @@
+
+  <div class="group col-md-6 col-md-offset-3">
+    <h2 class="text-center">新建模板</h2>
+    <%= simple_form_for @collection do |c| %>
+    <div class="form-group">
+      <%= c.input :title, input_html: { class: "form-control"} %>
+    </div>
+      <div class="form-group">
+        <%= c.input :content, input_html: { class: "form-control"} %>
+      </div>
+      <div class="form-group">
+        <%= c.input :price, input_html: { class: "form-control"} %>
+      </div>
+
+  <%= c.submit "Submit", class: "btn btn-primary", data: { disable_with: "Submitting..." } %>
+    <% end %>
+    <% if false %>
+    <table  class="table table-hover">
+      <thead>
+        <tr>
+          <td>No.</td>
+          <td>Question</td>
+          <td>
+            Include
+          </td>
+        </tr>
+      </thead>
+      <% @questions.each do |question| %>
+      <%= simple_form_for question do |q| %>
+        <tr>
+          <td><%= question.id %></td>
+
+          <td>
+
+            <%= question.content %></td>
+          <td>
+            <% if question.collections.include?(@collection) %>
+            <%= link_to("Quit", quit_collection_question_path(@collection,question), method: :post,  class: "btn btn-primary btn-danger") %>
+            <% else %>
+            <%= link_to("Join", join_collection_question_path(@collection,question), method: :post,  class: "btn btn-primary btn-success") %>
+            <% end %>s
+          </td>
+        </tr>
+        <% end %>
+      <% end %>
+    </table>
+    <% end %>
+  </div>
